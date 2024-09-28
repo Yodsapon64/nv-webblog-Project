@@ -21,6 +21,7 @@
         <hr>
       </div>
     </div>
+    <div v-else class="no-users">ไม่มีผู้ใช้ในขณะนี้</div>
     <div class="footer-actions">
       <button v-on:click="logout" class="logout-btn">ออกจากระบบ</button>
     </div>
@@ -30,10 +31,10 @@
 <script>
 import UsersService from "@/services/UsersService";
 export default {
-  data(){
+  data() {
     return {
       users: []
-    }
+    };
   },
   async created() {
     try {
@@ -44,9 +45,9 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('setToken', null);
-      this.$store.dispatch('setUser', null);
-      this.$router.push({ name: 'login' });
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+      this.$router.push({ name: "login" });
     },
     navigateTo(route) {
       this.$router.push(route);
@@ -78,12 +79,16 @@ export default {
   padding: 40px;
   max-width: 800px;
   margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
-  font-size: 24px;
-  color: #333;
+  font-size: 28px;
+  color: #4a4a4a;
+  margin-bottom: 15px;
 }
 
 .header-actions, .footer-actions {
@@ -93,7 +98,7 @@ h1 {
 }
 
 .create-btn, .logout-btn {
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -123,6 +128,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 20px;
+  background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -133,7 +139,7 @@ h1 {
 }
 
 .view-btn, .edit-btn, .delete-btn {
-  padding: 8px 15px;
+  padding: 10px 18px;
   border: none;
   border-radius: 6px;
   font-size: 14px;
@@ -168,5 +174,12 @@ h1 {
 
 button:active {
   transform: scale(1.03);
+}
+
+.no-users {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  margin-top: 20px;
 }
 </style>

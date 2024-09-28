@@ -4,16 +4,20 @@
     <p>กรุณากรอกข้อมูลเพื่อสร้างบัญชีผู้ใช้</p>
     <form v-on:submit.prevent="createUser">
       <div class="form-group">
-        <input type="text" v-model="user.name" placeholder="ชื่อ" required>
+        <input type="text" v-model="user.name" placeholder="ชื่อ" required @focus="showTooltip('กรุณากรอกชื่อ')" @blur="hideTooltip" />
+        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
       </div>
       <div class="form-group">
-        <input type="text" v-model="user.lastname" placeholder="นามสกุล" required>
+        <input type="text" v-model="user.lastname" placeholder="นามสกุล" required @focus="showTooltip('กรุณากรอกนามสกุล')" @blur="hideTooltip" />
+        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
       </div>
       <div class="form-group">
-        <input type="email" v-model="user.email" placeholder="อีเมล" required>
+        <input type="email" v-model="user.email" placeholder="อีเมล" required @focus="showTooltip('กรุณากรอกอีเมลที่ถูกต้อง')" @blur="hideTooltip" />
+        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
       </div>
       <div class="form-group">
-        <input type="password" v-model="user.password" placeholder="รหัสผ่าน" required>
+        <input type="password" v-model="user.password" placeholder="รหัสผ่าน" required @focus="showTooltip('ตั้งรหัสผ่านที่ปลอดภัย')" @blur="hideTooltip" />
+        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
       </div>
       <button type="submit" class="create-btn">สร้างบัญชี</button>
     </form>
@@ -31,7 +35,9 @@ export default {
         email: '',
         password: '',
         status: 'active'
-      }
+      },
+      tooltipVisible: false,
+      tooltipText: ''
     }
   },
   methods: {
@@ -42,6 +48,14 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    showTooltip(text) {
+      this.tooltipVisible = true;
+      this.tooltipText = text;
+    },
+    hideTooltip() {
+      this.tooltipVisible = false;
+      this.tooltipText = '';
     }
   }
 }
@@ -49,64 +63,80 @@ export default {
 
 <style scoped>
 .create-user-container {
-  padding: 40px;
-  max-width: 400px;
+  padding: 50px;
+  max-width: 500px;
   margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .create-user-container h1 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 28px;
+  color: #4a4a4a;
+  margin-bottom: 15px;
   text-align: center;
 }
 
 .create-user-container p {
-  margin-bottom: 20px;
-  color: #666;
+  margin-bottom: 25px;
+  color: #7a7a7a;
   text-align: center;
+  font-size: 16px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fff;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .form-group input:focus {
-  border-color: #ff790b;
+  border-color: #a5d6a7;
   outline: none;
-  box-shadow: 0 0 8px rgba(255, 120, 11, 0.5);
+  box-shadow: 0 0 10px rgba(165, 214, 167, 0.4);
+}
+
+.tooltip {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  background-color: #e0e0e0;
+  color: #555;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0.9;
 }
 
 .create-btn {
-  padding: 12px 20px;
+  padding: 14px 20px;
   width: 100%;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 18px;
   color: #fff;
-  background-color: #ff790b;
+  background-color: #81c784;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  text-transform: uppercase;
 }
 
 .create-btn:hover {
-  background-color: #e66b00;
+  background-color: #66bb6a;
   transform: scale(1.05);
 }
 
 .create-btn:active {
-  background-color: #cc5e00;
+  background-color: #4caf50;
   transform: scale(1.03);
 }
 </style>
