@@ -1,13 +1,13 @@
 <template>
   <div class="login-container">
-    <h1>User Login</h1>
+    <h1>เข้าสู่ระบบ</h1>
     <form v-on:submit.prevent="onLogin" class="login-form">
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">อีเมล</label>
         <input type="email" id="email" name="email" v-model="email" required />
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">รหัสผ่าน</label>
         <input
           type="password"
           id="password"
@@ -16,7 +16,7 @@
           required
         />
       </div>
-      <button type="submit" class="login-btn">Login</button>
+      <button type="submit" class="login-btn">เข้าสู่ระบบ</button>
       <div class="error" v-if="error">{{ error }}</div>
     </form>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import AuthenService from "../services/AuthenService";
+
 export default {
   data() {
     return {
