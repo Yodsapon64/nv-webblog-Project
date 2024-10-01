@@ -1,26 +1,33 @@
 <template>
   <div class="create-user-container">
-    <h1>สร้างผู้ใช้ใหม่</h1>
-    <p>กรุณากรอกข้อมูลเพื่อสร้างบัญชีผู้ใช้</p>
-    <form v-on:submit.prevent="createUser">
-      <div class="form-group">
-        <input type="text" v-model="user.name" placeholder="ชื่อ" required @focus="showTooltip('กรุณากรอกชื่อ')" @blur="hideTooltip" />
-        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+    <div class="create-card">
+      <div class="create-left">
+        <img src="img/img4.jpg" alt="Create User Image">
       </div>
-      <div class="form-group">
-        <input type="text" v-model="user.lastname" placeholder="นามสกุล" required @focus="showTooltip('กรุณากรอกนามสกุล')" @blur="hideTooltip" />
-        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+      <div class="create-right">
+        <h1>สร้างผู้ใช้ใหม่</h1>
+        <p>กรุณากรอกข้อมูลเพื่อสร้างบัญชีผู้ใช้</p>
+        <form v-on:submit.prevent="createUser">
+          <div class="form-group">
+            <input type="text" v-model="user.name" placeholder="ชื่อ" required @focus="showTooltip('กรุณากรอกชื่อ')" @blur="hideTooltip" />
+            <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+          </div>
+          <div class="form-group">
+            <input type="text" v-model="user.lastname" placeholder="นามสกุล" required @focus="showTooltip('กรุณากรอกนามสกุล')" @blur="hideTooltip" />
+            <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+          </div>
+          <div class="form-group">
+            <input type="email" v-model="user.email" placeholder="อีเมล" required @focus="showTooltip('กรุณากรอกอีเมลที่ถูกต้อง')" @blur="hideTooltip" />
+            <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+          </div>
+          <div class="form-group">
+            <input type="password" v-model="user.password" placeholder="รหัสผ่าน" required @focus="showTooltip('ตั้งรหัสผ่านที่ปลอดภัย')" @blur="hideTooltip" />
+            <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
+          </div>
+          <button type="submit" class="create-btn">สร้างบัญชี</button>
+        </form>
       </div>
-      <div class="form-group">
-        <input type="email" v-model="user.email" placeholder="อีเมล" required @focus="showTooltip('กรุณากรอกอีเมลที่ถูกต้อง')" @blur="hideTooltip" />
-        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
-      </div>
-      <div class="form-group">
-        <input type="password" v-model="user.password" placeholder="รหัสผ่าน" required @focus="showTooltip('ตั้งรหัสผ่านที่ปลอดภัย')" @blur="hideTooltip" />
-        <span class="tooltip" v-if="tooltipVisible">{{ tooltipText }}</span>
-      </div>
-      <button type="submit" class="create-btn">สร้างบัญชี</button>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -63,26 +70,47 @@ export default {
 
 <style scoped>
 .create-user-container {
-  padding: 50px;
-  max-width: 500px;
-  margin: auto;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-.create-user-container h1 {
-  font-size: 28px;
-  color: #4a4a4a;
-  margin-bottom: 15px;
-  text-align: center;
+.create-card {
+  background-color: #d8d8d8;
+  box-shadow: 0 4px 8px rgba(255, 116, 3, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  max-width: 800px;
+  width: 100%;
 }
 
-.create-user-container p {
-  margin-bottom: 25px;
-  color: #7a7a7a;
-  text-align: center;
-  font-size: 16px;
+.create-left {
+  flex: 1;
+  position: relative;
+}
+
+.create-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.create-right {
+  padding: 40px;
+  flex: 1;
+}
+
+.create-right h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.create-right p {
+  margin-bottom: 20px;
+  color: #666;
 }
 
 .form-group {
@@ -92,18 +120,17 @@ export default {
 
 .form-group input {
   width: 100%;
-  padding: 14px 18px;
+  padding: 12px 15px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 16px;
-  background-color: #fff;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
-  border-color: #a5d6a7;
+  border-color: #ff790b;
+  box-shadow: 0 0 8px rgba(255, 116, 3, 0.3);
   outline: none;
-  box-shadow: 0 0 10px rgba(165, 214, 167, 0.4);
 }
 
 .tooltip {
@@ -119,24 +146,20 @@ export default {
 }
 
 .create-btn {
-  padding: 14px 20px;
-  width: 100%;
+  padding: 12px;
   border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  color: #fff;
-  background-color: #81c784;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  background-color: #ff790b;
+  color: #fff;
 }
 
 .create-btn:hover {
-  background-color: #66bb6a;
+  background-color: #e66b00;
   transform: scale(1.05);
-}
-
-.create-btn:active {
-  background-color: #4caf50;
-  transform: scale(1.03);
 }
 </style>
