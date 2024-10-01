@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <nav class="nv-navbar">
-      <ul class="nav">
-        <li><router-link :to="{ name: 'blogs' }">บล็อก</router-link></li>
-        <li><router-link :to="{ name: 'users' }">ผู้ใช้</router-link></li>
-        <li><router-link :to="{ name: 'comments' }">ความคิดเห็น</router-link></li>
-        <li><router-link :to="{ name: 'login' }">เข้าสู่ระบบ</router-link></li>
-      </ul>
-    </nav>
+  <div class="topbar">
+    <div class="logo">
+      <router-link :to="{ name: 'home' }">เว็บแอปพลิเคชั่นสำหรับการเช่าหนังสือ Ebook</router-link>
+    </div>
+    <ul class="menu">
+      <li><router-link :to="{ name: 'blogs' }">บล็อก</router-link></li>
+      <li><router-link :to="{ name: 'users' }">ผู้ใช้</router-link></li>
+      <li><router-link :to="{ name: 'comments' }">ความคิดเห็น</router-link></li>
+      <li><router-link :to="{ name: 'login' }">เข้าสู่ระบบ</router-link></li>
+    </ul>
   </div>
 </template>
 
@@ -16,55 +17,54 @@ export default {};
 </script>
 
 <style scoped>
-.nv-navbar {
-  background-color: #ff790b;
-  padding: 15px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgb(54, 54, 54);
+  margin: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 60px;
 }
 
-.nav {
+.logo a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   list-style: none;
   margin: 0;
-  padding: 0;
 }
 
-.nav li {
-  list-style: none;
+.menu li {
+  margin-left: 15px;
 }
 
-.nav li a {
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
+.menu li a {
   text-decoration: none;
-  padding: 10px 20px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-.nav li a:hover {
-  color: #e66b00;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.nav li a.router-link-active {
-  background-color: #e66b00;
-  color: white;
+.menu li a:hover {
+  color: #ff790b;
 }
 
 @media (max-width: 768px) {
-  .nav {
+  .menu {
     flex-direction: column;
     align-items: center;
   }
 
-  .nav li {
+  .menu li {
     margin-bottom: 10px;
   }
 }
