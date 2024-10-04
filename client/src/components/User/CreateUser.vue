@@ -2,7 +2,7 @@
   <div class="create-user-container">
     <div class="create-card">
       <div class="create-left">
-        <img src="img/img4.jpg" alt="Create User Image">
+        <img src="@/assets/dragon ball.jpg" alt="Create User Image"> <!-- เพิ่มเส้นทางรูปภาพ -->
       </div>
       <div class="create-right">
         <h1>สร้างผู้ใช้ใหม่</h1>

@@ -4,8 +4,8 @@
       <router-link :to="{ name: 'home' }">เว็บแอปพลิเคชั่นสำหรับการเช่าหนังสือ Ebook</router-link>
     </div>
     <ul class="menu">
-      <li><router-link :to="{ name: 'blogs' }">บล็อก</router-link></li>
-      <li><router-link :to="{ name: 'users' }">ผู้ใช้</router-link></li>
+      <li><router-link :to="{ name: 'blogs' }">หน้าแรก</router-link></li>
+      <li><router-link :to="{ name: 'users' }">ข้อมูลผู้ใช้</router-link></li>
       <li><router-link :to="{ name: 'user-create' }">สร้างบัญชีผู้ใช้งาน</router-link></li>
       <li><router-link :to="{ name: 'comments' }">ความคิดเห็น</router-link></li>
       <li><router-link :to="{ name: 'login' }">เข้าสู่ระบบ</router-link></li>
