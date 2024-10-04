@@ -2,10 +2,11 @@
   <div class="login-user-container">
     <div class="login-card">
       <div class="login-left">
-        <img src="@/assets/dragon ball.jpg" alt="Login Image"> <!-- เส้นทางรูปภาพ -->
+        <img src="@/assets/evangelion.jpg" alt="Login Image"> <!-- เส้นทางรูปภาพ -->
       </div>
       <div class="login-right">
         <h1>เข้าสู่ระบบ</h1>
+        <p class="login-description">กรุณากรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ</p>
         <form v-on:submit.prevent="onLogin" class="login-form">
           <div class="form-group">
             <label for="email">อีเมล</label>
@@ -64,17 +65,24 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
 .login-card {
-  background-color: #d8d8d8;
-  box-shadow: 0 4px 8px rgba(255, 116, 3, 0.1);
-  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .login-left {
@@ -89,38 +97,43 @@ export default {
 }
 
 .login-right {
-  padding: 40px;
+  padding: 50px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.login-right h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
+h1 {
+  font-size: 28px;
   color: #333;
+  margin-bottom: 10px;
+}
+
+.login-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
-  position: relative;
 }
 
 .form-group label {
+  font-size: 14px;
+  color: #333;
   margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
 }
 
 .form-group input {
-  padding: 12px 15px;
   width: 100%;
+  padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
@@ -129,21 +142,20 @@ export default {
 
 .form-group input:focus {
   border-color: #ff790b;
-  box-shadow: 0 0 8px rgba(255, 116, 3, 0.3);
+  box-shadow: 0 0 10px rgba(255, 120, 11, 0.3);
   outline: none;
 }
 
 .login-btn {
-  padding: 12px;
+  padding: 15px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  width: 100%;
+  margin-top: 20px;
   background-color: #ff790b;
   color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .login-btn:hover {
@@ -152,7 +164,22 @@ export default {
 }
 
 .error {
-  margin-top: 10px;
+  margin-top: 20px;
   color: red;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+  }
+
+  .login-left {
+    height: 200px;
+  }
+
+  .login-right {
+    padding: 30px;
+  }
 }
 </style>
