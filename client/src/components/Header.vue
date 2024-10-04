@@ -6,6 +6,7 @@
     <ul class="menu">
       <li><router-link :to="{ name: 'blogs' }">บล็อก</router-link></li>
       <li><router-link :to="{ name: 'users' }">ผู้ใช้</router-link></li>
+      <li><router-link :to="{ name: 'user-create' }">สร้างบัญชีผู้ใช้งาน</router-link></li>
       <li><router-link :to="{ name: 'comments' }">ความคิดเห็น</router-link></li>
       <li><router-link :to="{ name: 'login' }">เข้าสู่ระบบ</router-link></li>
     </ul>
@@ -22,10 +23,10 @@ export default {};
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: rgb(54, 54, 54);
+  background-color: rgb(54, 54, 54); /* สีพื้นหลัง */
   margin: 8px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงา */
   height: 60px;
 }
 
@@ -33,7 +34,7 @@ export default {};
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  color: #fff; /* สีตัวอักษรโลโก้ */
 }
 
 .menu {
@@ -49,13 +50,13 @@ export default {};
 
 .menu li a {
   text-decoration: none;
-  color: #fff;
+  color: #fff; /* สีตัวอักษรในเมนู */
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* การเปลี่ยนสี */
 }
 
 .menu li a:hover {
-  color: #ff790b;
+  color: #ff790b; /* สีเมื่อเมาส์อยู่เหนือเมนู */
 }
 
 @media (max-width: 768px) {
