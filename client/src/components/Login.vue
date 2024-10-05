@@ -2,7 +2,7 @@
   <div class="login-user-container">
     <div class="login-card">
       <div class="login-left">
-        <img src="@/assets/evangelion.jpg" alt="Login Image"> <!-- เส้นทางรูปภาพ -->
+        <img src="@/assets/onepiece.jpeg" alt="Login Image"> <!-- เส้นทางรูปภาพ -->
       </div>
       <div class="login-right">
         <h1>เข้าสู่ระบบ</h1>
